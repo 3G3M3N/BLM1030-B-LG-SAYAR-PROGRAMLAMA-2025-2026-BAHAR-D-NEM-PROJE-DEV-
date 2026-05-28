@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginWindow</class>
+ <widget class="QMainWindow" name="LoginWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>480</width><height>400</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>Araç Kiralama Sistemi - Giriş</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f0f4f8;
+}
+QLabel#lblBaslik {
+    color: #1a237e;
+    font-weight: bold;
+}
+QLabel#lblAlt {
+    color: #546e7a;
+}
+QPushButton#btnGiris {
+    background-color: #1565c0;
+    color: white;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+QPushButton#btnGiris:hover {
+    background-color: #0d47a1;
+}
+QPushButton#btnKayit {
+    background-color: #ffffff;
+    color: #1565c0;
+    border: 2px solid #1565c0;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 13px;
+}
+QPushButton#btnKayit:hover {
+    background-color: #e3f2fd;
+}
+QLineEdit {
+    border: 2px solid #bbdefb;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 13px;
+    background-color: white;
+    min-height: 28px;
+}
+QLineEdit:focus {
+    border: 2px solid #1565c0;
+}
+QLabel {
+    font-size: 12px;
+    color: #37474f;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <spacer name="topSpacer">
+      <property name="orientation"><enum>Qt::Vertical</enum></property>
+      <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="centerLayout">
+      <item>
+       <spacer name="leftSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="frameLogin">
+        <property name="minimumSize"><size><width>300</width><height>0</height></size></property>
+        <property name="maximumSize"><size><width>360</width><height>16777215</height></size></property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}</string>
+        </property>
+        <property name="frameShape"><enum>QFrame::Shape::StyledPanel</enum></property>
+        <layout class="QVBoxLayout" name="frameLayout">
+         <item>
+          <widget class="QLabel" name="lblBaslik">
+           <property name="font"><font><family>Segoe UI</family><pointsize>16</pointsize><bold>true</bold></font></property>
+           <property name="text"><string>Araç Kiralama</string></property>
+           <property name="alignment"><set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter</set></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblAlt">
+           <property name="font"><font><pointsize>10</pointsize></font></property>
+           <property name="text"><string>Hesabınıza giriş yapın</string></property>
+           <property name="alignment"><set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter</set></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblEmail">
+           <property name="text"><string>E-posta Adresi</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtEmail">
+           <property name="placeholderText"><string>ornek@email.com</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblSifre">
+           <property name="text"><string>Şifre</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtSifre">
+           <property name="placeholderText"><string>Şifrenizi girin</string></property>
+           <property name="echoMode"><enum>QLineEdit::EchoMode::Password</enum></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnGiris">
+           <property name="minimumSize"><size><width>0</width><height>38</height></size></property>
+           <property name="text"><string>Giriş Yap</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnKayit">
+           <property name="minimumSize"><size><width>0</width><height>36</height></size></property>
+           <property name="text"><string>Hesabın yok mu? Kayıt Ol</string></property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="rightSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="bottomSpacer">
+      <property name="orientation"><enum>Qt::Vertical</enum></property>
+      <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry"><rect><x>0</x><y>0</y><width>480</width><height>18</height></rect></property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminPanel</class>
+ <widget class="QMainWindow" name="AdminPanel">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1100</width><height>750</height></rect>
+  </property>
+  <property name="windowTitle"><string>Yönetici Paneli - Araç Kiralama Sistemi</string></property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    background-color: #1565c0;
+    color: white;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 34px;
+}
+QPushButton:hover { background-color: #0d47a1; }
+QPushButton#btnAracSil { background-color: #c62828; }
+QPushButton#btnAracSil:hover { background-color: #b71c1c; }
+QPushButton#btnBakimEkle { background-color: #1565c0; }
+QPushButton#btnBakimEkle:hover { background-color: #0d47a1; }
+QPushButton#btnBakimdenCikar { background-color: #c62828; }
+QPushButton#btnBakimdenCikar:hover { background-color: #b71c1c; }
+QPushButton#btnKiralamaKapat { background-color: #c62828; }
+QPushButton#btnKiralamaKapat:hover { background-color: #b71c1c; }
+QTableWidget {
+    border: 1px solid #b0bec5;
+    gridline-color: #eceff1;
+    background-color: white;
+    selection-background-color: #bbdefb;
+    alternate-background-color: #f5f5f5;
+}
+QTableWidget::item { padding: 4px; }
+QHeaderView::section {
+    background-color: #1565c0;
+    color: white;
+    padding: 6px;
+    font-weight: bold;
+    border: none;
+}
+QTabWidget::pane { border: 1px solid #b0bec5; background-color: white; }
+QTabBar::tab {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 10px 24px;
+    font-weight: bold;
+    border: 1px solid #b0bec5;
+    border-bottom: none;
+    font-size: 13px;
+}
+QTabBar::tab:selected { background-color: #1565c0; color: white; }
+QLineEdit {
+    border: 2px solid #b0bec5;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13px;
+    background-color: white;
+    min-height: 28px;
+}
+QLineEdit:focus { border: 2px solid #1565c0; }
+QSpinBox, QDoubleSpinBox {
+    border: 2px solid #b0bec5;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13px;
+    background-color: white;
+    min-height: 28px;
+}
+QComboBox {
+    border: 2px solid #b0bec5;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13px;
+    background-color: white;
+    min-height: 28px;
+}
+QLabel { font-size: 12px; color: #37474f; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <item>
+     <layout class="QHBoxLayout" name="baslikLayout">
+      <item>
+       <widget class="QLabel" name="lblPanelBaslik">
+        <property name="font"><font><pointsize>14</pointsize><bold>true</bold></font></property>
+        <property name="styleSheet"><string notr="true">color: #0d47a1;</string></property>
+        <property name="text"><string>Yönetici Paneli - Araç Kiralama Sistemi</string></property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="baslikSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnCikis">
+        <property name="maximumSize"><size><width>120</width><height>32</height></size></property>
+        <property name="styleSheet"><string notr="true">background-color: #c62828; color: white; border-radius: 6px; font-weight: bold;</string></property>
+        <property name="text"><string>Çıkış Yap</string></property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex"><number>0</number></property>
+
+      <widget class="QWidget" name="tab">
+       <attribute name="title"><string>Araç Yönetimi</string></attribute>
+       <layout class="QVBoxLayout" name="aracTabLayout">
+        <item>
+         <layout class="QHBoxLayout" name="aracAramaLayout">
+          <item>
+           <widget class="QLabel" name="lblAracListesi">
+            <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+            <property name="text"><string>Tüm Araçlar:</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="aracAramaSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblAracArama">
+            <property name="text"><string>Arama (Marka/Model/Plaka/Durum):</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtAracArama">
+            <property name="minimumSize"><size><width>240</width><height>30</height></size></property>
+            <property name="placeholderText"><string>Toyota, Kirada, 34ABC...</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblAraclar">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch><verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="selectionMode"><enum>QAbstractItemView::SelectionMode::SingleSelection</enum></property>
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="altPanelLayout">
+          <item>
+           <widget class="QFrame" name="frameAracEkle">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>1</horstretch><verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame { background-color: #e3f2fd; border-radius: 8px; border: 1px solid #bbdefb; }</string>
+            </property>
+            <layout class="QVBoxLayout" name="aracEkleLayout">
+             <item>
+              <widget class="QLabel" name="lblYeniArac">
+               <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+               <property name="text"><string>Yeni Araç Ekle</string></property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="row1">
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblMarka"><property name="text"><string>Marka:</string></property></widget></item>
+                 <item><widget class="QLineEdit" name="txtMarka"><property name="placeholderText"><string>Toyota, Ford, BMW...</string></property></widget></item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblPlaka"><property name="text"><string>Plaka:</string></property></widget></item>
+                 <item><widget class="QLineEdit" name="txtPlaka"><property name="placeholderText"><string>34 ABC 123</string></property></widget></item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="row2">
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblModel"><property name="text"><string>Model:</string></property></widget></item>
+                 <item><widget class="QLineEdit" name="txtModel"><property name="placeholderText"><string>Corolla, Fiesta...</string></property></widget></item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblRenk"><property name="text"><string>Renk:</string></property></widget></item>
+                 <item><widget class="QLineEdit" name="txtRenk"><property name="placeholderText"><string>Beyaz, Siyah, Gri...</string></property></widget></item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="row3">
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblKategori"><property name="text"><string>Kategori:</string></property></widget></item>
+                 <item>
+                  <widget class="QComboBox" name="cmbKategori">
+                   <item><property name="text"><string>Sedan</string></property></item>
+                   <item><property name="text"><string>SUV</string></property></item>
+                   <item><property name="text"><string>Hatchback</string></property></item>
+                   <item><property name="text"><string>Minivan</string></property></item>
+                   <item><property name="text"><string>Pickup</string></property></item>
+                   <item><property name="text"><string>Spor</string></property></item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblYil"><property name="text"><string>Yıl:</string></property></widget></item>
+                 <item>
+                  <widget class="QSpinBox" name="spinYil">
+                   <property name="minimum"><number>2000</number></property>
+                   <property name="maximum"><number>2026</number></property>
+                   <property name="value"><number>2020</number></property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblFiyat"><property name="text"><string>Günlük Fiyat (TL):</string></property></widget></item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="spinFiyat">
+                   <property name="maximum"><double>99999.000000000000000</double></property>
+                   <property name="singleStep"><double>50.000000000000000</double></property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="aracButonLayout">
+               <item><widget class="QPushButton" name="btnAracEkle"><property name="text"><string>Araç Ekle</string></property></widget></item>
+               <item><widget class="QPushButton" name="btnAracSil"><property name="text"><string>Seçili Aracı Sil</string></property></widget></item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frameBakim">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>1</horstretch><verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame { background-color: #e3f2fd; border-radius: 8px; border: 1px solid #bbdefb; }</string>
+            </property>
+            <layout class="QVBoxLayout" name="bakimLayout">
+             <item>
+              <widget class="QLabel" name="lblBakim">
+               <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+               <property name="text"><string>Seçili Araç İçin Bakım Kaydı</string></property>
+              </widget>
+             </item>
+             <item><widget class="QLabel" name="lblBakimAciklama"><property name="text"><string>Bakım Açıklaması:</string></property></widget></item>
+             <item><widget class="QLineEdit" name="txtBakimAciklama"><property name="placeholderText"><string>Yağ değişimi, lastik değişimi...</string></property></widget></item>
+             <item><widget class="QLabel" name="lblBakimMaliyet"><property name="text"><string>Bakım Maliyeti (TL):</string></property></widget></item>
+             <item>
+              <widget class="QDoubleSpinBox" name="spinBakimMaliyet">
+               <property name="maximum"><double>99999.000000000000000</double></property>
+               <property name="singleStep"><double>100.000000000000000</double></property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="bakimVSpacer">
+               <property name="orientation"><enum>Qt::Vertical</enum></property>
+               <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+              </spacer>
+             </item>
+             <item><widget class="QPushButton" name="btnBakimEkle"><property name="text"><string>Bakım Kaydı Ekle (Araç Müsait Olmayacak)</string></property></widget></item>
+             <item><widget class="QPushButton" name="btnBakimdenCikar"><property name="text"><string>Seçili Aracı Bakımdan Çıkar</string></property></widget></item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title"><string>Kiralamalar</string></attribute>
+       <layout class="QVBoxLayout" name="kiralamaTabLayout">
+        <item>
+         <widget class="QLabel" name="lblKiralamaListesi">
+          <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+          <property name="text"><string>Tüm Kiralama Kayıtları:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblKiralamalar">
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="kiralamaButonLayout">
+          <item>
+           <widget class="QPushButton" name="btnKiralamaKapat">
+            <property name="minimumSize"><size><width>260</width><height>40</height></size></property>
+            <property name="text"><string>Seçili Kiralama İşlemini Kapat</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="kiralamaHSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title"><string>Müşteriler</string></attribute>
+       <layout class="QVBoxLayout" name="musteriTabLayout">
+        <item>
+         <widget class="QLabel" name="lblMusteriListesi">
+          <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+          <property name="text"><string>Kayıtlı Müşteriler:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblMusteriler">
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title"><string>Bakım Kayıtları</string></attribute>
+       <layout class="QVBoxLayout" name="bakimTabLayout">
+        <item>
+         <widget class="QLabel" name="lblBakimListesi">
+          <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+          <property name="text"><string>Tüm Bakım Kayıtları:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblBakimlar">
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title"><string>Ödemeler</string></attribute>
+       <layout class="QVBoxLayout" name="odemeTabLayout">
+        <item>
+         <widget class="QLabel" name="lblOdemeler">
+          <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+          <property name="text"><string>Tüm Ödeme Kayıtları:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblOdemeler">
+          <property name="alternatingRowColors"><bool>true</bool></property>
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry"><rect><x>0</x><y>0</y><width>1100</width><height>22</height></rect></property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

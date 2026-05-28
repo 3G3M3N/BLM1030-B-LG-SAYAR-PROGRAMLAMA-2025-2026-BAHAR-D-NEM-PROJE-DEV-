@@ -1,0 +1,12 @@
+# Qt Creator and build artifacts
+AracKiralama/build/
+AracKiralama/.qtcreator/
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+*.Debug
+*.Release
+
+# OS specific files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>900</width><height>650</height></rect>
+  </property>
+  <property name="windowTitle"><string>Müşteri Paneli</string></property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    background-color: #1565c0;
+    color: white;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 32px;
+}
+QPushButton:hover { background-color: #0d47a1; }
+QPushButton#btnCikis { background-color: #c62828; }
+QPushButton#btnCikis:hover { background-color: #b71c1c; }
+QPushButton#btnKartKaydet { background-color: #2e7d32; }
+QPushButton#btnKartKaydet:hover { background-color: #1b5e20; }
+QTableWidget {
+    border: 1px solid #bbdefb;
+    gridline-color: #e3f2fd;
+    background-color: white;
+    selection-background-color: #bbdefb;
+}
+QTableWidget::item { padding: 5px; }
+QHeaderView::section {
+    background-color: #1565c0;
+    color: white;
+    padding: 6px;
+    font-weight: bold;
+    border: none;
+}
+QTabWidget::pane { border: 1px solid #bbdefb; background-color: white; }
+QTabBar::tab {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 8px 16px;
+    font-weight: bold;
+    border: 1px solid #bbdefb;
+    border-bottom: none;
+}
+QTabBar::tab:selected { background-color: #1565c0; color: white; }
+QDateEdit, QLineEdit {
+    border: 2px solid #bbdefb;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13px;
+    background-color: white;
+    min-height: 28px;
+}
+QLineEdit:focus { border: 2px solid #1565c0; }
+QLabel { font-size: 12px; color: #37474f; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <item>
+     <layout class="QHBoxLayout" name="baslikLayout">
+      <item>
+       <widget class="QLabel" name="lblHosgeldin">
+        <property name="font"><font><pointsize>14</pointsize><bold>true</bold></font></property>
+        <property name="styleSheet"><string notr="true">color: #0d47a1;</string></property>
+        <property name="text"><string>Araç Kiralama Sistemi - Müşteri Paneli</string></property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="baslikSpacer">
+        <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnCikis">
+        <property name="maximumSize"><size><width>120</width><height>32</height></size></property>
+        <property name="text"><string>Çıkış Yap</string></property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex"><number>0</number></property>
+
+      <!-- Müsait Araçlar -->
+      <widget class="QWidget" name="tab">
+       <attribute name="title"><string>Müsait Araçlar</string></attribute>
+       <layout class="QVBoxLayout" name="tab1Layout">
+        <item>
+         <layout class="QHBoxLayout" name="aramaLayout">
+          <item>
+           <widget class="QLabel" name="lblAracListesi">
+            <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+            <property name="text"><string>Kiralayabileceğiniz Araçlar:</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="aramaSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblArama"><property name="text"><string>Arama:</string></property></widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtArama">
+            <property name="minimumSize"><size><width>200</width><height>30</height></size></property>
+            <property name="placeholderText"><string>Marka, model, plaka...</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblAraclar">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch><verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="selectionMode"><enum>QAbstractItemView::SelectionMode::SingleSelection</enum></property>
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frameKirala">
+          <property name="styleSheet">
+           <string notr="true">QFrame { background-color: #e3f2fd; border-radius: 8px; border: 1px solid #bbdefb; }</string>
+          </property>
+          <layout class="QVBoxLayout" name="kiralaLayout">
+           <item>
+            <widget class="QLabel" name="lblKiralaBaslik">
+             <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+             <property name="text"><string>Kiralama Tarihleri</string></property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="tarihLayout">
+             <item>
+              <layout class="QVBoxLayout">
+               <item><widget class="QLabel" name="lblBaslangic"><property name="text"><string>Başlangıç Tarihi:</string></property></widget></item>
+               <item><widget class="QDateEdit" name="dateBaslangic"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout">
+               <item><widget class="QLabel" name="lblBitis"><property name="text"><string>Bitiş Tarihi:</string></property></widget></item>
+               <item><widget class="QDateEdit" name="dateBitis"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnKirala">
+               <property name="minimumSize"><size><width>160</width><height>40</height></size></property>
+               <property name="text"><string>Seçili Aracı Kirala</string></property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="kiralaHSpacer">
+               <property name="orientation"><enum>Qt::Horizontal</enum></property>
+               <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Kiralama Geçmişim -->
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title"><string>Kiralama Geçmişim</string></attribute>
+       <layout class="QVBoxLayout" name="tab2Layout">
+        <item>
+         <widget class="QLabel" name="lblGecmis">
+          <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+          <property name="text"><string>Geçmiş ve Aktif Kiralamalarım:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblGecmis">
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Ödemelerim -->
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title"><string>Ödemelerim</string></attribute>
+       <layout class="QVBoxLayout" name="tab3Layout">
+        <item>
+         <widget class="QLabel" name="lblOdemeler">
+          <property name="font"><font><pointsize>11</pointsize><bold>true</bold></font></property>
+          <property name="text"><string>Ödeme Geçmişim:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tblOdemeler">
+          <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+          <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Kartım -->
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title"><string>Kartım</string></attribute>
+       <layout class="QVBoxLayout" name="tab4Layout">
+        <item>
+         <layout class="QHBoxLayout" name="kartUstLayout">
+          <item>
+           <widget class="QFrame" name="frameKartForm">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>1</horstretch><verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame { background-color: #e3f2fd; border-radius: 10px; border: 1px solid #bbdefb; }</string>
+            </property>
+            <layout class="QVBoxLayout" name="kartFormLayout">
+             <item>
+              <widget class="QLabel" name="lblKartBaslik">
+               <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+               <property name="styleSheet"><string notr="true">color: #1565c0;</string></property>
+               <property name="text"><string>Kart Bilgileri</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblKartDurum">
+               <property name="text"><string>Yükleniyor...</string></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblKartNo2"><property name="text"><string>Kart Numarası:</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="txtKartNo">
+               <property name="placeholderText"><string>1234 5678 9012 3456</string></property>
+               <property name="maxLength"><number>19</number></property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblKartAd2"><property name="text"><string>Kart Üzerindeki Ad:</string></property></widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="txtKartAd">
+               <property name="placeholderText"><string>AD SOYAD</string></property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="kartAltLayout">
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblSK2"><property name="text"><string>Son Kullanma (AA/YY):</string></property></widget></item>
+                 <item>
+                  <widget class="QLineEdit" name="txtSonKullanma">
+                   <property name="placeholderText"><string>12/28</string></property>
+                   <property name="maxLength"><number>5</number></property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout">
+                 <item><widget class="QLabel" name="lblCvv2"><property name="text"><string>CVV:</string></property></widget></item>
+                 <item>
+                  <widget class="QLineEdit" name="txtCvv">
+                   <property name="placeholderText"><string>123</string></property>
+                   <property name="maxLength"><number>3</number></property>
+                   <property name="echoMode"><enum>QLineEdit::EchoMode::Password</enum></property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnKartKaydet">
+               <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+               <property name="text"><string>Kartı Kaydet / Güncelle</string></property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="kartSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="kartVSpacer">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>18</height></rect></property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
