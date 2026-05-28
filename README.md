@@ -27,5 +27,4 @@ Bu proje, C++ ve Qt Framework kullanılarak geliştirilmiş bir **Araç Kiralama
 2. `AracKiralama.pro` dosyasını Qt Creator ile açın.
 3. Projeyi derleyin (Build) ve çalıştırın (Run).
 
-
-👨‍💻
+Not: Proje kaynak kodları AracKiralama klasörünün içindedir. 👨‍💻
