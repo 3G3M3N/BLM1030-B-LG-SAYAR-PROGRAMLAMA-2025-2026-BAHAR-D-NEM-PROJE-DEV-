@@ -1,6 +1,6 @@
-# Araç Kiralama Otomasyonu (Car Rental System)
+# Araç Kiralama Uygulaması (Car Rental System)
 
-Bu proje, C++ ve Qt Framework kullanılarak geliştirilmiş bir **Araç Kiralama Otomasyonu** uygulamasıdır. SQL veritabanı entegrasyonu ile araçların, müşterilerin, kiralamaların ve ödemelerin yönetimini sağlar.
+Bu proje, C++ ve Qt Framework kullanılarak geliştirilmiş bir **Araç Kiralama Uygulamasıdır**. SQL veritabanı entegrasyonu ile araçların, müşterilerin, kiralamaların ve ödemelerin yönetimini sağlar.
 
 ## Özellikler
 - **Giriş Paneli (Login Window):** Yönetici ve müşteri giriş yetkilendirmesi.
