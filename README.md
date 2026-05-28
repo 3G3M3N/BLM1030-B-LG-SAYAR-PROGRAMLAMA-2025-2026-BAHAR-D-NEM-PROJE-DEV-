@@ -26,3 +26,6 @@ Bu proje, C++ ve Qt Framework kullanılarak geliştirilmiş bir **Araç Kiralama
 1. Bilgisayarınızda **Qt Creator** ve uygun bir derleyicinin (örn. MinGW) kurulu olduğundan emin olun.
 2. `AracKiralama.pro` dosyasını Qt Creator ile açın.
 3. Projeyi derleyin (Build) ve çalıştırın (Run).
+
+
+👨‍💻
